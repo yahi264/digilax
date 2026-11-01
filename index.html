@@ -111,7 +111,7 @@ if(!matchMedia("(prefers-reduced-motion: reduce)").matches){h.classList.add("mot
         <a class="btn btn-ghost magnetic" href="#work" data-i18n="hero.cta2">See our work</a>
       </div>
       <ul class="hero-proof">
-        <li><b data-count="1448">1,448</b><span data-i18n="hero.p1">pages live for a client</span></li>
+        <li><b data-count="10">10</b><span data-i18n="hero.p1">websites built for clients</span></li>
         <li><b data-count="5">5</b><span data-i18n="hero.p2">languages incl. Arabic</span></li>
         <li><b>24/7</b><span data-i18n="hero.p3">quote requests to your inbox</span></li>
       </ul>
@@ -142,7 +142,7 @@ if(!matchMedia("(prefers-reduced-motion: reduce)").matches){h.classList.add("mot
 <!-- ═════════ MARQUEE ═════════ -->
 <section class="marquee" aria-label="What we add to websites">
   <div class="marquee-row" data-dir="1">
-    <div class="marquee-track" data-i18n="marquee.a" data-i18n-html><span>Business websites</span><span>Quote forms</span><span>WhatsApp buttons</span><span>Multilingual</span><span>Arabic RTL</span><span>Dark &amp; light mode</span><span>Product catalogs</span></div>
+    <div class="marquee-track" data-i18n="marquee.a" data-i18n-html><span>Business websites</span><span>AI assistants</span><span>Quote forms</span><span>WhatsApp buttons</span><span>Multilingual</span><span>Arabic RTL</span><span>Dark &amp; light mode</span><span>Product catalogs</span></div>
   </div>
   <div class="marquee-row alt" data-dir="-1">
     <div class="marquee-track" data-i18n="marquee.b" data-i18n-html><span>QR codes</span><span>Business cards</span><span>cPanel hosting</span><span>Business email</span><span>Google Maps</span><span>SEO basics</span><span>Smooth animations</span></div>
@@ -163,6 +163,19 @@ if(!matchMedia("(prefers-reduced-motion: reduce)").matches){h.classList.add("mot
         <h3 data-i18n="s1.t">Business websites</h3>
         <p data-i18n="s1.d">Modern, fast and mobile-first sites that explain what you do in seconds and make people want to contact you.</p>
         <div class="web-viz" aria-hidden="true"><span style="--h:42%"></span><span style="--h:64%"></span><span style="--h:52%"></span><span style="--h:80%"></span><span style="--h:70%"></span><span style="--h:96%"></span><small data-i18n="s1.viz">Visitors → requests</small></div>
+      </article>
+      <article class="card spot c-ai" data-reveal>
+        <div class="c-ai-copy">
+          <div class="card-ic"><svg class="ic"><use href="#i-sparkle"/></svg></div>
+          <h3 data-i18n="s10.t">AI assistants for your website</h3>
+          <p data-i18n="s10.d">A smart assistant that answers your visitors 24/7 in their language — prices, services, opening hours — and hands hot leads to your WhatsApp. Trained on your business.</p>
+          <button class="btn btn-primary btn-sm" data-ai-open><svg class="ic"><use href="#i-sparkle"/></svg><span data-i18n="s10.btn">Try our assistant</span></button>
+        </div>
+        <div class="c-ai-chat" aria-hidden="true">
+          <p class="cb me" data-i18n="s10.q">Do you deliver on Saturdays?</p>
+          <p class="cb bot" data-i18n="s10.a">Yes! We deliver Monday to Saturday, 9:00–19:00. Shall I open WhatsApp so you can order now?</p>
+          <span class="cb-typing"><i></i><i></i><i></i></span>
+        </div>
       </article>
       <article class="card spot c-form" data-reveal>
         <div class="card-ic"><svg class="ic"><use href="#i-mail"/></svg></div>
@@ -348,6 +361,15 @@ if(!matchMedia("(prefers-reduced-motion: reduce)").matches){h.classList.add("mot
         </div>
       </div>
     </div>
+
+    <div class="pf-head">
+      <div>
+        <h3 class="pf-title" data-reveal data-i18n="work.allT">Every website we've built</h3>
+        <p class="pf-sub" data-reveal data-i18n="work.allD">Clinics, factories, exporters, consultants, cafés and brands. Client names stay private — the live demos show the real work.</p>
+      </div>
+      <div class="pf-filters" role="group" aria-label="Filter projects" data-pf-filters></div>
+    </div>
+    <div class="pf-grid" data-portfolio></div>
   </div>
 </section>
 
@@ -403,6 +425,7 @@ if(!matchMedia("(prefers-reduced-motion: reduce)").matches){h.classList.add("mot
           <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="plan3.f2">Up to 5 languages incl. Arabic RTL</span></li>
           <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="plan3.f3">QR codes &amp; business cards</span></li>
           <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="plan3.f4">Hosting, domain &amp; email setup</span></li>
+          <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="plan3.f6">AI assistant for your visitors</span></li>
           <li><svg class="ic"><use href="#i-check"/></svg><span data-i18n="plan3.f5">3 months of support</span></li>
         </ul>
         <a class="btn btn-ghost" href="#contact" data-plan="Pro & Catalog" data-i18n="pricing.choose">Get my quote</a>
@@ -434,6 +457,7 @@ if(!matchMedia("(prefers-reduced-motion: reduce)").matches){h.classList.add("mot
     <div class="faq">
       <details data-reveal><summary><span data-i18n="q1">How long does a website take?</span><i></i></summary><div class="ans"><p data-i18n="a1">A one-page site takes about a week. A complete business site usually takes two to three weeks, depending on how quickly we receive your texts and photos.</p></div></details>
       <details data-reveal><summary><span data-i18n="q7">How much does a website cost?</span><i></i></summary><div class="ans"><p data-i18n="a7">It depends on what your business needs — number of pages, languages, catalog, forms and hosting. After a free call we send you a clear written quote, and nothing starts until you agree.</p></div></details>
+      <details data-reveal><summary><span data-i18n="q8">Can you add an AI assistant to my website?</span><i></i></summary><div class="ans"><p data-i18n="a8">Yes. We build an assistant that knows your services, hours, pricing approach and FAQs, answers visitors in their language and sends serious requests to your WhatsApp or email. Try ours — the button at the bottom of the page.</p></div></details>
       <details data-reveal><summary><span data-i18n="q2">What do I need to prepare?</span><i></i></summary><div class="ans"><p data-i18n="a2">Your logo (or we design one), a few photos and a short description of your business. We help with everything else — including writing and translating the texts.</p></div></details>
       <details data-reveal><summary><span data-i18n="q3">Can the form send requests to my email?</span><i></i></summary><div class="ans"><p data-i18n="a3">Yes. On your hosting, the form emails every request to your address and sends your client a confirmation. You can also receive requests on WhatsApp.</p></div></details>
       <details data-reveal><summary><span data-i18n="q4">Do you handle hosting, domain and email?</span><i></i></summary><div class="ans"><p data-i18n="a4">Yes. We can set up cPanel hosting, your domain name, the SSL certificate (the padlock) and professional email addresses for your team.</p></div></details>
@@ -536,12 +560,32 @@ if(!matchMedia("(prefers-reduced-motion: reduce)").matches){h.classList.add("mot
 
 <a class="wa-fab" data-cfg-href="wa" href="#" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg class="ic"><use href="#i-chat"/></svg></a>
 
+<!-- ═════════ AI ASSISTANT ═════════ -->
+<button class="ai-launch" data-ai-open aria-label="Open the Digilax AI assistant" aria-expanded="false"><svg class="ic"><use href="#i-sparkle"/></svg><span class="ai-launch-label" data-i18n="ai.launch">Ask AI</span></button>
+<div class="ai-teaser" hidden><button class="ai-teaser-x" aria-label="Close">×</button><p data-i18n="ai.teaser">Hi! 👋 Questions about a website for your business? Ask me.</p></div>
+<section class="ai-panel" aria-hidden="true" aria-label="Digilax AI assistant" role="dialog">
+  <header class="ai-head">
+    <svg class="ai-av"><use href="#logo-mark"/></svg>
+    <div><b data-i18n="ai.name">Digilax Assistant</b><small><span class="ai-dot"></span><span data-i18n="ai.status">AI · replies instantly</span></small></div>
+    <button class="ai-x" data-ai-close aria-label="Close"><svg class="ic"><use href="#i-plus"/></svg></button>
+  </header>
+  <div class="ai-body" aria-live="polite" data-lenis-prevent></div>
+  <div class="ai-sug"></div>
+  <form class="ai-form">
+    <input type="text" maxlength="400" autocomplete="off" data-i18n-ph="ai.ph" placeholder="Type your question…" aria-label="Your question">
+    <button type="submit" aria-label="Send"><svg class="ic flip"><use href="#i-arrow"/></svg></button>
+  </form>
+  <p class="ai-note" data-i18n="ai.note">Automated assistant — for a firm quote, our team replies personally.</p>
+</section>
+
 <script src="vendor/gsap.min.js" defer></script>
 <script src="vendor/ScrollTrigger.min.js" defer></script>
 <script src="vendor/lenis.min.js" defer></script>
 <script src="vendor/qrcode.js" defer></script>
 <script src="js/config.js" defer></script>
+<script src="js/projects.js" defer></script>
 <script src="js/i18n.js" defer></script>
 <script src="js/main.js" defer></script>
+<script src="js/assistant.js" defer></script>
 </body>
 </html>

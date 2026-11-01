@@ -21,6 +21,10 @@ window.DIGILAX = {
   // Left empty (GitHub Pages), the form sends the request by WhatsApp or email.
   formEndpoint: "",
 
+  // AI assistant: empty = answers from the built-in knowledge (works everywhere).
+  // On cPanel hosting, upload server/ai/ and set "ai/assistant.php" to use a real AI model.
+  aiEndpoint: "",
+
   // Client reviews. Leave the list empty to show the "your review here" placeholders.
   // Example: { quote: "…", name: "Ayşe K.", company: "Ayşe Bakery" }
   testimonials: [],

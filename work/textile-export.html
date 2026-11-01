@@ -155,6 +155,24 @@ if(!matchMedia("(prefers-reduced-motion: reduce)").matches){h.classList.add("mot
 </footer>
 <a class="wa-fab" data-cfg-href="wa" href="#" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><svg class="ic"><use href="#i-chat"/></svg></a>
 
+<!-- ═════════ AI ASSISTANT ═════════ -->
+<button class="ai-launch" data-ai-open aria-label="Open the Digilax AI assistant" aria-expanded="false"><svg class="ic"><use href="#i-sparkle"/></svg><span class="ai-launch-label" data-i18n="ai.launch">Ask AI</span></button>
+<div class="ai-teaser" hidden><button class="ai-teaser-x" aria-label="Close">×</button><p data-i18n="ai.teaser">Hi! 👋 Questions about a website for your business? Ask me.</p></div>
+<section class="ai-panel" aria-hidden="true" aria-label="Digilax AI assistant" role="dialog">
+  <header class="ai-head">
+    <svg class="ai-av"><use href="#logo-mark"/></svg>
+    <div><b data-i18n="ai.name">Digilax Assistant</b><small><span class="ai-dot"></span><span data-i18n="ai.status">AI · replies instantly</span></small></div>
+    <button class="ai-x" data-ai-close aria-label="Close"><svg class="ic"><use href="#i-plus"/></svg></button>
+  </header>
+  <div class="ai-body" aria-live="polite" data-lenis-prevent></div>
+  <div class="ai-sug"></div>
+  <form class="ai-form">
+    <input type="text" maxlength="400" autocomplete="off" data-i18n-ph="ai.ph" placeholder="Type your question…" aria-label="Your question">
+    <button type="submit" aria-label="Send"><svg class="ic flip"><use href="#i-arrow"/></svg></button>
+  </form>
+  <p class="ai-note" data-i18n="ai.note">Automated assistant — for a firm quote, our team replies personally.</p>
+</section>
+
 <script src="../vendor/gsap.min.js" defer></script>
 <script src="../vendor/ScrollTrigger.min.js" defer></script>
 <script src="../vendor/lenis.min.js" defer></script>
@@ -162,5 +180,6 @@ if(!matchMedia("(prefers-reduced-motion: reduce)").matches){h.classList.add("mot
 <script src="../js/config.js" defer></script>
 <script src="../js/i18n.js" defer></script>
 <script src="../js/main.js" defer></script>
+<script src="../js/assistant.js" defer></script>
 </body>
 </html>

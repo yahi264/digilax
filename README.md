@@ -20,6 +20,9 @@ Live (GitHub Pages): https://yahi264.github.io/digilax/
 | `assets/` | Logos (`logo-light.svg`, `logo-dark.svg`, `logo-mark.svg`, wordmarks) and case-study images. |
 | `favicon.svg` | Browser tab icon. |
 | `server/contact.php` | Email script for when the site moves to cPanel hosting. |
+| `js/projects.js` | **Portfolio** — one entry per website (texts in 4 languages, screenshot, demo link). |
+| `js/assistant.js` | The AI assistant (chat window) and its answers in 4 languages. |
+| `server/ai/assistant.php` | Optional: connects the assistant to a real AI model (Claude) on cPanel. |
 | `vendor/` | Animation libraries (GSAP, ScrollTrigger, Lenis) and the QR code library. |
 
 ## To fill in (placeholders)
@@ -57,3 +60,11 @@ GitHub Pages serves the `gh-pages` branch (a copy of `main`); changes appear wit
 2. Upload `server/contact.php` to `public_html` too, fill in its addresses, and set
    `formEndpoint: "contact.php"` in `js/config.js` — the form will then email you directly.
 3. In `404.html`, replace `/digilax/` with `/`.
+4. Optional — real AI answers: follow the steps at the top of `server/ai/assistant.php`
+   (Anthropic API key stored outside `public_html`), then set `aiEndpoint: "ai/assistant.php"`.
+
+## Adding a new project to the portfolio
+
+Open `js/projects.js`, copy one entry and change it. Put a 960×600 screenshot in
+`assets/projects/`. Leave `url: ""` for clients who don't want a public link — the card then shows
+"Private client". Never write the client's company name.

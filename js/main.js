@@ -57,6 +57,7 @@
   /* ── Language ────────────────────────────────────────────── */
   const EN = {};
   $$("[data-i18n]").forEach((el) => { if (!(el.dataset.i18n in EN)) EN[el.dataset.i18n] = el.innerHTML; });
+  $$("[data-i18n-ph]").forEach((el) => { EN[el.dataset.i18nPh] = el.placeholder; });
   T.en = EN;
 
   function setLang(next, initial) {
@@ -69,6 +70,7 @@
       const v = dict[el.dataset.i18n] ?? EN[el.dataset.i18n];
       if (v != null) el.innerHTML = v;
     });
+    $$("[data-i18n-ph]").forEach((el) => { el.placeholder = dict[el.dataset.i18nPh] ?? EN[el.dataset.i18nPh]; });
     $$("[data-lang-current]").forEach((el) => (el.textContent = lang.toUpperCase()));
     $$("[data-set-lang]").forEach((b) => {
       const on = b.dataset.setLang === lang;
@@ -79,9 +81,50 @@
     renderReviews();
     setWaTopic(waTopic);
     renderInboxEmpty();
+    renderPortfolio();
     $$("[data-count]").forEach((el) => (el.textContent = fmt(+el.dataset.count)));
     if (!initial && motion) buildDynamic(true);
+    document.dispatchEvent(new CustomEvent("dlx:lang", { detail: lang }));
   }
+
+  /* ── Portfolio (data in js/projects.js) ──────────────────── */
+  let pfFilter = "all";
+  const pfSeen = new IntersectionObserver((entries) => entries.forEach((e) => {
+    if (e.isIntersecting) { e.target.classList.add("in"); pfSeen.unobserve(e.target); }
+  }), { rootMargin: "0px 0px -8% 0px" });
+  function renderPortfolio() {
+    const grid = $("[data-portfolio]"), bar = $("[data-pf-filters]");
+    const P = window.DLX_PROJECTS, U = window.DLX_PROJECT_UI;
+    if (!grid || !P || !U) return;
+    const L = (o) => o[lang] || o.en;
+    const cats = ["all", ...new Set(P.map((p) => p.cat))];
+    bar.innerHTML = cats.map((c) => `<button data-cat="${c}" aria-pressed="${c === pfFilter}">${L(U.cats[c])}<sup>${c === "all" ? P.length : P.filter((p) => p.cat === c).length}</sup></button>`).join("");
+    const lock = '<svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>';
+    grid.innerHTML = P.map((p) => {
+      const langs = /^\d+$/.test(p.langs) ? `${p.langs} ${L(U.langs)}` : p.langs;
+      const label = p.url ? (p.internal ? L(U.study) : L(U.live)) : "";
+      const link = p.url ? `<a class="pf-link" href="${p.url}"${p.internal ? " data-transition" : ' target="_blank" rel="noopener"'} aria-label="${esc(L(p.t))} — ${label}" data-cursor="${p.internal ? "→" : "↗"}"></a>` : "";
+      return `<article class="pf-card${pfFilter !== "all" && p.cat !== pfFilter ? " out" : ""}" data-cat="${p.cat}">
+        <div class="pf-shot"><img src="${p.img}" alt="" loading="lazy" width="960" height="600"><span class="pf-cat">${L(U.cats[p.cat])}</span>
+          ${p.url ? `<span class="pf-go"><svg class="ic${p.internal ? " flip" : ""}"><use href="#${p.internal ? "i-arrow" : "i-out"}"/></svg></span>` : `<span class="pf-lock">${lock}${L(U.priv)}</span>`}</div>
+        <div class="pf-info"><h4>${esc(L(p.t))}</h4><p>${esc(L(p.d))}</p>
+          <div class="pf-meta">${p.f.map((f) => `<span class="${f === "ai" ? "ai" : ""}">${L(U.feats[f])}</span>`).join("")}<span class="lg">${langs}</span></div></div>
+        ${link}</article>`;
+    }).join("");
+    $$(".pf-card", grid).forEach((c) => pfSeen.observe(c));
+  }
+  document.addEventListener("click", (e) => {
+    const b = e.target.closest("[data-pf-filters] button");
+    if (!b) return;
+    pfFilter = b.dataset.cat;
+    $$("[data-pf-filters] button").forEach((x) => x.setAttribute("aria-pressed", x === b));
+    $$(".pf-card").forEach((c) => {
+      const show = pfFilter === "all" || c.dataset.cat === pfFilter;
+      c.classList.toggle("out", !show);
+      if (show && motion) { c.classList.remove("in"); requestAnimationFrame(() => requestAnimationFrame(() => c.classList.add("in"))); }
+    });
+    window.ScrollTrigger?.refresh();
+  });
   const fmt = (n) => n.toLocaleString(lang === "ar" ? "en" : lang);
 
   function initialLang() {
@@ -405,6 +448,7 @@
     lenis.on("scroll", ST.update);
     gsap.ticker.add((t) => lenis.raf(t * 1000));
     gsap.ticker.lagSmoothing(0);
+    window.dlxScrollTo = (el) => lenis.scrollTo(el, { offset: -80, duration: 1.4 });
   }
 
   // Scroll progress bar
